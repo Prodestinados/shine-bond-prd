@@ -1,0 +1,2638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine & Bond Jewelry — Product Requirements Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ RESET & BASE ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #1a3a32;
+      --teal-light: #2a5a4a;
+      --gold: #c9a84c;
+      --gold-light: #d4b96a;
+      --cream: #faf7f2;
+      --cream-dark: #f0ebe3;
+      --charcoal: #2d2d2d;
+      --charcoal-light: #555555;
+      --rose: #b76e79;
+      --white: #ffffff;
+      --border: #e5e0d8;
+      --radius: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--charcoal);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══ LAYOUT ═══ */
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ═══ HEADER BAR ═══ */
+    .header-bar {
+      background: var(--teal);
+      padding: 32px 24px;
+      text-align: center;
+      margin-bottom: 40px;
+      border-radius: var(--radius);
+    }
+    .header-bar h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--white);
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .header-bar .subtitle {
+      font-family: 'Inter', sans-serif;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .header-bar .build-time {
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      margin-top: 12px;
+    }
+
+    /* ═══ TYPOGRAPHY ═══ */
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--teal);
+      margin: 48px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--teal);
+      margin: 40px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--teal);
+      margin: 32px 0 10px;
+    }
+
+    h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin: 24px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--charcoal);
+    }
+
+    em {
+      color: var(--charcoal-light);
+      font-style: italic;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    a:hover {
+      border-bottom-color: var(--gold);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 40px 0;
+    }
+
+    /* ═══ LISTS ═══ */
+    ul, ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    li > ul, li > ol {
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+
+    /* Checkbox lists (task lists) */
+    ul li input[type="checkbox"] {
+      margin-right: 6px;
+      accent-color: var(--gold);
+    }
+
+    /* ═══ TABLES ═══ */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 14px;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    thead {
+      background: var(--teal);
+      color: var(--white);
+    }
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    tbody tr:hover {
+      background: var(--cream);
+    }
+
+    td {
+      padding: 10px 16px;
+      vertical-align: top;
+    }
+
+    /* Highlight rows with checkmarks or status */
+    td:first-child {
+      font-weight: 500;
+    }
+
+    /* ═══ CODE & PRE ═══ */
+    code {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 13px;
+      background: var(--cream-dark);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--teal);
+    }
+
+    pre {
+      background: var(--charcoal);
+      color: #e0e0e0;
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    /* ═══ BLOCKQUOTE ═══ */
+    blockquote {
+      border-left: 4px solid var(--gold);
+      padding: 12px 20px;
+      margin: 16px 0 24px;
+      background: var(--white);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--charcoal-light);
+      font-style: italic;
+    }
+
+    /* ═══ SECTION NUMBERS ═══ */
+    .page-wrapper > h2:before {
+      display: none;
+    }
+
+    /* ═══ TABLE OF CONTENTS ═══ */
+    .page-wrapper > ol:first-of-type {
+      background: var(--white);
+      padding: 24px 24px 24px 48px;
+      border-radius: var(--radius);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--gold);
+    }
+    .page-wrapper > ol:first-of-type li {
+      padding: 4px 0;
+    }
+    .page-wrapper > ol:first-of-type a {
+      font-weight: 500;
+      color: var(--teal);
+    }
+    .page-wrapper > ol:first-of-type a:hover {
+      color: var(--gold);
+    }
+
+    /* ═══ STATUS INDICATORS ═══ */
+
+    /* ═══ FOOTER ═══ */
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      color: var(--charcoal-light);
+      font-size: 13px;
+    }
+    .footer .brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--teal);
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    /* ═══ PRINT STYLES ═══ */
+    @media print {
+      body {
+        background: white;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .header-bar {
+        background: var(--teal) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-after: always;
+      }
+      .page-wrapper {
+        max-width: 100%;
+        padding: 0;
+      }
+      h1, h2 {
+        page-break-after: avoid;
+      }
+      table {
+        page-break-inside: avoid;
+        font-size: 11px;
+      }
+      thead {
+        background: var(--teal) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a { color: var(--charcoal); border: none; }
+      pre {
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+      .footer { display: none; }
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 640px) {
+      .page-wrapper { padding: 20px 16px 60px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 20px; }
+      table { font-size: 12px; }
+      thead th, td { padding: 8px 10px; }
+      .header-bar h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <div class="header-bar">
+      <h1>Shine &amp; Bond Jewelry</h1>
+      <div class="subtitle">Product Requirements Document</div>
+      <div class="build-time">Generated: February 20, 2026 at 12:15 AM PST</div>
+    </div>
+
+    
+<h2>Shine &amp; Bond Jewelry</h2>
+<p><strong>Document Version:</strong> 1.0
+<strong>Date:</strong> February 19, 2026
+<strong>Company:</strong> Shine &amp; Bond Jewelry
+<strong>Location:</strong> Los Angeles, California
+<strong>Website:</strong> shineandbond.myshopify.com
+<strong>Contact:</strong> <a href="mailto:info@shineandbond.com">info@shineandbond.com</a> | 844.572.2557</p>
+<hr>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-problem-statement">Problem Statement</a></li>
+<li><a href="#3-target-users--personas">Target Users &amp; Personas</a></li>
+<li><a href="#4-product-overview">Product Overview</a></li>
+<li><a href="#5-digital-platform-strategy">Digital Platform Strategy</a></li>
+<li><a href="#6-content--blog-automation-strategy">Content &amp; Blog Automation Strategy</a></li>
+<li><a href="#7-marketing--growth-strategy">Marketing &amp; Growth Strategy</a></li>
+<li><a href="#8-technology-stack">Technology Stack</a></li>
+<li><a href="#9-pricing-strategy--unit-economics">Pricing Strategy &amp; Unit Economics</a></li>
+<li><a href="#10-revenue-model--financial-projections">Revenue Model &amp; Financial Projections</a></li>
+<li><a href="#11-competitive-analysis">Competitive Analysis</a></li>
+<li><a href="#12-product-roadmap--milestones">Product Roadmap &amp; Milestones</a></li>
+<li><a href="#13-success-metrics--kpis">Success Metrics &amp; KPIs</a></li>
+<li><a href="#14-risks--mitigations">Risks &amp; Mitigations</a></li>
+</ol>
+<hr>
+<h2>1. Executive Summary</h2>
+<h3>1.1 Business Overview</h3>
+<p>Shine &amp; Bond Jewelry is a direct-to-consumer fine jewelry brand founded in 2024 by two women in Los Angeles, California. The brand operates at the intersection of fine jewelry e-commerce and experiential permanent jewelry services — a dual-revenue model that no major competitor executes at this price tier.</p>
+<p>The brand&#39;s signature phrase — <em>&quot;Let&#39;s Get Linked Together&quot;</em> — captures both the literal act of permanent jewelry welding and the emotional bond that fine jewelry represents.</p>
+<h3>1.2 Mission</h3>
+<p><em>Timeless jewelry, crafted with intention.</em> Shine &amp; Bond creates fine jewelry in 14K gold and lab-grown diamonds designed to be everyday companions — not locked-away luxuries. Every piece is ethically sourced, handcrafted, and priced to be accessible without compromise.</p>
+<h3>1.3 Vision</h3>
+<p>Become the leading DTC fine jewelry brand in Southern California that seamlessly blends online retail with in-person experiential services, building a community of customers who discover the brand at pop-ups and events, and return online for their forever pieces.</p>
+<h3>1.4 Current State (February 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Shopify store (24 SKUs)</td>
+<td>Live — launched March 7, 2026</td>
+</tr>
+<tr>
+<td>Marketing site (Next.js 14)</td>
+<td>Built — 10+ section SPA</td>
+</tr>
+<tr>
+<td>Instagram (@shinebond2)</td>
+<td>Active — 1,972 followers, 27 posts</td>
+</tr>
+<tr>
+<td>Pop-up events</td>
+<td>Active — 4-6/month across SoCal</td>
+</tr>
+<tr>
+<td>Private party bookings</td>
+<td>Active — via Calendly</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>Not yet launched</td>
+</tr>
+<tr>
+<td>Email marketing</td>
+<td>Not yet launched</td>
+</tr>
+<tr>
+<td>Blog content</td>
+<td>Planned — 3 placeholder articles</td>
+</tr>
+<tr>
+<td>Google Analytics</td>
+<td>Not yet configured</td>
+</tr>
+</tbody></table>
+<h3>1.5 Document Purpose</h3>
+<p>This PRD defines the complete product strategy, growth roadmap, and success metrics for Shine &amp; Bond Jewelry across all channels — e-commerce, services, content, and marketing. It serves as the single source of truth for business decisions and prioritization.</p>
+<hr>
+<h2>2. Problem Statement</h2>
+<h3>2.1 Market Gaps</h3>
+<p><strong>The Trust &amp; Pricing Problem in Traditional Jewelry</strong>
+Traditional retail jewelry operates on 2-4x markups through a chain of wholesalers, distributors, and department store margins. Consumers suspect they&#39;re overpaying but lack transparency to confirm it. DTC brands like Mejuri have begun addressing this, but the $400-$4,000 tier — the sweet spot for fine jewelry self-purchase and meaningful gifting — remains underserved by brands that combine ethical sourcing with personal touch.</p>
+<p><strong>Lab-Grown Diamonds Lack DTC Representation at the Accessible Luxury Tier</strong>
+Brilliant Earth dominates the engagement ring space ($2,000-$50,000+), and Mejuri offers lab-grown options at the lower end ($40-$3,000), but there is no established DTC brand that leads with lab-grown diamonds in the $400-$4,000 everyday fine jewelry range with a strong local community presence.</p>
+<p><strong>The Permanent Jewelry / Fine Jewelry Divide</strong>
+Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold-plated or gold-filled fashion jewelry — not 14K solid gold fine jewelry. Fine jewelry brands (Mejuri, Brilliant Earth) don&#39;t offer experiential services like welding or private parties. This creates a gap: customers who discover a brand through permanent jewelry at an event have nowhere to go for a fine jewelry upgrade within the same brand.</p>
+<h3>2.2 Shine &amp; Bond&#39;s Unique Position</h3>
+<p>Shine &amp; Bond bridges all three gaps simultaneously:</p>
+<ol>
+<li><strong>Ethical DTC fine jewelry</strong> at accessible luxury pricing ($400-$4,000) with transparent materials</li>
+<li><strong>Lab-grown diamonds as the default</strong> — not an alternative option, but the primary offering</li>
+<li><strong>Experiential funnel</strong> — permanent jewelry and private parties create in-person discovery that feeds online fine jewelry sales</li>
+<li><strong>Two-woman founder story</strong> — personal connection, cultural warmth, LA community roots</li>
+</ol>
+<hr>
+<h2>3. Target Users &amp; Personas</h2>
+<h3>3.1 Primary Persona: The Self-Purchaser</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Age</strong></td>
+<td>28–35</td>
+</tr>
+<tr>
+<td><strong>Income</strong></td>
+<td>$70K–$130K</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>Greater Los Angeles / SoCal</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>$800–$2,000 per purchase</td>
+</tr>
+<tr>
+<td><strong>Behavior</strong></td>
+<td>Researches before buying, values ethical sourcing, buys jewelry for herself as a form of self-expression and self-reward</td>
+</tr>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Instagram, Google search (&quot;14k gold necklace,&quot; &quot;lab diamond ring&quot;), influencer recommendations</td>
+</tr>
+<tr>
+<td><strong>Pain Points</strong></td>
+<td>Overwhelmed by traditional jewelry stores, skeptical of markup, wants quality without pretension</td>
+</tr>
+<tr>
+<td><strong>Motivation</strong></td>
+<td>&quot;I deserve a beautiful piece I can wear every day.&quot;</td>
+</tr>
+</tbody></table>
+<h3>3.2 The Gift Giver</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Age</strong></td>
+<td>30–50</td>
+</tr>
+<tr>
+<td><strong>Income</strong></td>
+<td>$80K–$150K</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>$400–$1,500 per gift</td>
+</tr>
+<tr>
+<td><strong>Behavior</strong></td>
+<td>Shops for birthdays, Mother&#39;s Day, Valentine&#39;s Day, Christmas, anniversaries. Prefers brands with gifting-ready packaging and easy returns.</td>
+</tr>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Google search (&quot;jewelry gift for girlfriend,&quot; &quot;Mother&#39;s Day jewelry&quot;), social media ads, word of mouth</td>
+</tr>
+<tr>
+<td><strong>Pain Points</strong></td>
+<td>Unsure what to pick, afraid of choosing wrong size/style, wants something that feels special but isn&#39;t engagement-ring-level serious</td>
+</tr>
+<tr>
+<td><strong>Motivation</strong></td>
+<td>&quot;I want to give something meaningful that shows I put thought into it.&quot;</td>
+</tr>
+</tbody></table>
+<h3>3.3 The Experience Seeker</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Age</strong></td>
+<td>22–35</td>
+</tr>
+<tr>
+<td><strong>Income</strong></td>
+<td>$45K–$90K</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>$75–$200 (permanent jewelry), scales up to $800+ for fine jewelry after initial experience</td>
+</tr>
+<tr>
+<td><strong>Behavior</strong></td>
+<td>Attends events with friends, posts on Instagram/TikTok, values the experience as much as the product. Bachelorette parties, birthday groups, girls&#39; nights.</td>
+</tr>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Instagram Reels, TikTok, friend invitation, pop-up event discovery</td>
+</tr>
+<tr>
+<td><strong>Pain Points</strong></td>
+<td>Wants a fun, shareable experience. Not currently shopping for fine jewelry but is open to upgrading after a positive brand interaction.</td>
+</tr>
+<tr>
+<td><strong>Motivation</strong></td>
+<td>&quot;This is such a cool experience — I want to go with my friends!&quot;</td>
+</tr>
+</tbody></table>
+<h3>3.4 The Fine Jewelry Collector</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Age</strong></td>
+<td>35–55</td>
+</tr>
+<tr>
+<td><strong>Income</strong></td>
+<td>$120K+</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>$2,000–$4,000 per purchase</td>
+</tr>
+<tr>
+<td><strong>Behavior</strong></td>
+<td>Repeat buyer. Appreciates craftsmanship, materials quality, and design uniqueness. Owns multiple fine jewelry pieces and looks for brands that offer curation rather than mass production.</td>
+</tr>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Instagram, word of mouth, local event discovery, Google search (&quot;tennis bracelet 14k gold&quot;)</td>
+</tr>
+<tr>
+<td><strong>Pain Points</strong></td>
+<td>Bored with mass-market options, wants something distinctive but not custom-priced</td>
+</tr>
+<tr>
+<td><strong>Motivation</strong></td>
+<td>&quot;I want a statement piece from a brand I feel connected to.&quot;</td>
+</tr>
+</tbody></table>
+<h3>3.5 The SoCal Event Browser</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Age</strong></td>
+<td>25–45</td>
+</tr>
+<tr>
+<td><strong>Income</strong></td>
+<td>Varied</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>Impulse: $75–$400, with potential to scale</td>
+</tr>
+<tr>
+<td><strong>Behavior</strong></td>
+<td>Attends weekend markets, wine festivals, and local pop-ups. Discovers brands in person. Browses without intent to buy but converts when the product and founder interaction create trust.</td>
+</tr>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>In-person at events (714 Market Enclave, Thursday Night Market, Ventura Wine Festival)</td>
+</tr>
+<tr>
+<td><strong>Pain Points</strong></td>
+<td>Skeptical of online-only brands. Wants to see/touch/try before committing.</td>
+</tr>
+<tr>
+<td><strong>Motivation</strong></td>
+<td>&quot;I love finding unique brands at these markets.&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. Product Overview</h2>
+<h3>4.1 Revenue Stream 1: Fine Jewelry E-Commerce (PRIMARY)</h3>
+<p>The core business is an online fine jewelry store offering handcrafted pieces in 14K gold with lab-grown diamonds and ethically sourced gemstones.</p>
+<p><strong>Full Product Catalog (24 SKUs)</strong></p>
+<h4>Necklaces (5 SKUs) — $950 to $3,800</h4>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Material</th>
+<th>Stone/Accent</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>14k Rose Gold Clover Diamond Necklace</td>
+<td>14K Rose Gold</td>
+<td>Lab Diamond</td>
+<td>$3,000</td>
+</tr>
+<tr>
+<td>14k Rose Gold Diamond Clover Mother of Pearl Necklace</td>
+<td>14K Rose Gold</td>
+<td>Mother of Pearl</td>
+<td>$3,100</td>
+</tr>
+<tr>
+<td>14k White Gold Diamond Sapphire Necklace</td>
+<td>14K White Gold</td>
+<td>Sapphire</td>
+<td>$3,400</td>
+</tr>
+<tr>
+<td>14k Yellow Gold Cathy&#39;s Heart Lab Diamond Necklace</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$950</td>
+</tr>
+<tr>
+<td>14K Yellow Gold Lab Diamond Drop Necklace</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$3,800</td>
+</tr>
+</tbody></table>
+<p><strong>Category Average:</strong> $2,850 | <strong>Entry Point:</strong> $950</p>
+<h4>Rings (8 SKUs) — $980 to $3,300</h4>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Material</th>
+<th>Stone/Accent</th>
+<th>Price</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classic Lab Diamond Eternity Band — Full Pavé Sparkle</td>
+<td>14K Gold</td>
+<td>Lab Diamond</td>
+<td>$980</td>
+<td></td>
+</tr>
+<tr>
+<td>14k Yellow Gold Lab Diamond Bezel Eternity Band</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$1,200</td>
+<td></td>
+</tr>
+<tr>
+<td>14k White Gold Lab Diamond Eternity Band</td>
+<td>14K White Gold</td>
+<td>Lab Diamond</td>
+<td>$1,350</td>
+<td></td>
+</tr>
+<tr>
+<td>Vintage 14K Yellow Gold Blue Sapphire Pear Ring</td>
+<td>14K Yellow Gold</td>
+<td>Sapphire</td>
+<td>$1,000</td>
+<td><strong>Sold Out</strong></td>
+</tr>
+<tr>
+<td>Lab Diamond Gold Ring</td>
+<td>14K Gold</td>
+<td>Lab Diamond</td>
+<td>$2,900</td>
+<td></td>
+</tr>
+<tr>
+<td>Gold Geometric Wrap Ring with Lab Diamond Accents</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$2,900</td>
+<td></td>
+</tr>
+<tr>
+<td>Spiral Wrap Gold Ring</td>
+<td>14K Gold</td>
+<td>—</td>
+<td>$2,900</td>
+<td></td>
+</tr>
+<tr>
+<td>14k Yellow Gold Elegant Lab Diamond Multi-Band Floral Ring</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$3,300</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Category Average:</strong> $2,066 | <strong>Entry Point:</strong> $980</p>
+<h4>Bracelets &amp; Bangles (7 SKUs) — $400 to $4,000</h4>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Material</th>
+<th>Stone/Accent</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classic Gold Chain Link Bracelet</td>
+<td>14K Gold</td>
+<td>—</td>
+<td>$400</td>
+</tr>
+<tr>
+<td>Tennis Lab Diamond Bracelet (Style A)</td>
+<td>14K Gold</td>
+<td>Lab Diamond</td>
+<td>$2,000</td>
+</tr>
+<tr>
+<td>Tennis Lab Diamond Bracelet (Style B)</td>
+<td>14K Gold</td>
+<td>Lab Diamond</td>
+<td>$2,195</td>
+</tr>
+<tr>
+<td>Elegant Gold Pyramid Stud Bangle</td>
+<td>14K Gold</td>
+<td>—</td>
+<td>$2,200</td>
+</tr>
+<tr>
+<td>Luxurious Rose Gold Diamond Pyramid Bangle</td>
+<td>14K Rose Gold</td>
+<td>Lab Diamond</td>
+<td>$3,200</td>
+</tr>
+<tr>
+<td>14k White Gold Lab Diamond Tennis Bracelet</td>
+<td>14K White Gold</td>
+<td>Lab Diamond</td>
+<td>$4,000</td>
+</tr>
+<tr>
+<td>14k Yellow Gold Lab Diamond Tennis Bracelet</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$4,000</td>
+</tr>
+</tbody></table>
+<p><strong>Category Average:</strong> $2,571 | <strong>Entry Point:</strong> $400 (lowest in entire catalog)</p>
+<h4>Earrings (4 SKUs) — $680 to $800</h4>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Material</th>
+<th>Stone/Accent</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>14k Yellow Gold Clover Lab Diamond Huggies</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$680</td>
+</tr>
+<tr>
+<td>14k Yellow Gold Dangle Earrings</td>
+<td>14K Yellow Gold</td>
+<td>—</td>
+<td>$780</td>
+</tr>
+<tr>
+<td>14k Yellow Gold Lab Diamond Hoop Earrings</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$800</td>
+</tr>
+<tr>
+<td>14k Yellow Gold Lab Diamond Huggies</td>
+<td>14K Yellow Gold</td>
+<td>Lab Diamond</td>
+<td>$800</td>
+</tr>
+</tbody></table>
+<p><strong>Category Average:</strong> $765 | <strong>Entry Point:</strong> $680</p>
+<h4>Catalog Pricing Analysis</h4>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Price Range</th>
+<th>SKU Count</th>
+<th>% of Catalog</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Entry</td>
+<td>$400–$999</td>
+<td>7</td>
+<td>29%</td>
+<td>Gateway purchases, gifting sweet spot</td>
+</tr>
+<tr>
+<td>Mid-Tier</td>
+<td>$1,000–$1,999</td>
+<td>3</td>
+<td>13%</td>
+<td><strong>GAP — needs expansion</strong></td>
+</tr>
+<tr>
+<td>Core</td>
+<td>$2,000–$2,999</td>
+<td>7</td>
+<td>29%</td>
+<td>Statement pieces, tennis bracelets</td>
+</tr>
+<tr>
+<td>Premium</td>
+<td>$3,000–$4,000</td>
+<td>7</td>
+<td>29%</td>
+<td>Signature pieces, investment jewelry</td>
+</tr>
+</tbody></table>
+<p><strong>Critical Insight:</strong> Only 3 of 24 SKUs (13%) fall in the $1,000–$1,999 mid-tier range. This is the most common price point for meaningful gifts and first-time fine jewelry purchases. Filling this gap is the highest-priority catalog expansion action.</p>
+<h4>Materials Used</h4>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>SKU Count</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>14K Yellow Gold</td>
+<td>14</td>
+<td>58%</td>
+</tr>
+<tr>
+<td>14K Gold (unspecified)</td>
+<td>5</td>
+<td>21%</td>
+</tr>
+<tr>
+<td>14K Rose Gold</td>
+<td>3</td>
+<td>13%</td>
+</tr>
+<tr>
+<td>14K White Gold</td>
+<td>3</td>
+<td>13%</td>
+</tr>
+<tr>
+<td>Lab-Grown Diamonds</td>
+<td>18</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>Sapphire</td>
+<td>2</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Mother of Pearl</td>
+<td>1</td>
+<td>4%</td>
+</tr>
+</tbody></table>
+<h3>4.2 Revenue Stream 2: Permanent Jewelry Services (PERIPHERAL)</h3>
+<p>Permanent jewelry is a custom-fit chain (bracelet, anklet, necklace, or ring) that is welded directly onto the wearer — no clasp needed. It&#39;s designed to stay on forever as a symbol of connection, friendship, or self-love.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Service</strong></td>
+<td>Custom-fit welding of chains onto wrist, ankle, neck, or finger</td>
+</tr>
+<tr>
+<td><strong>Materials</strong></td>
+<td>Gold-filled, sterling silver</td>
+</tr>
+<tr>
+<td><strong>Pricing</strong></td>
+<td>Not currently published (recommendation: add &quot;Starting at $X&quot; to site)</td>
+</tr>
+<tr>
+<td><strong>Delivery</strong></td>
+<td>In-person only: pop-up events, private parties, future studio</td>
+</tr>
+<tr>
+<td><strong>Booking</strong></td>
+<td>Calendly (calendly.com/info-shinebond/private-party-1/)</td>
+</tr>
+<tr>
+<td><strong>Equipment</strong></td>
+<td>Pulse-arc welder, chain inventory, sizing tools</td>
+</tr>
+</tbody></table>
+<p><strong>Care FAQ:</strong></p>
+<ul>
+<li>Gold-filled: safe for showering and swimming</li>
+<li>Sterling silver: may tarnish with water, easily cleaned</li>
+</ul>
+<p><strong>Strategic Role:</strong> Permanent jewelry is the acquisition funnel. Customers discover Shine &amp; Bond at events or parties, have a positive brand experience, and are introduced to the fine jewelry collection. The in-person interaction builds trust that accelerates online conversion.</p>
+<h3>4.3 Revenue Stream 3: Private Events &amp; Parties</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Format</strong></td>
+<td>Private group permanent jewelry experience</td>
+</tr>
+<tr>
+<td><strong>Occasions</strong></td>
+<td>Bachelorette parties, birthdays, friend groups, bridal parties, corporate events</td>
+</tr>
+<tr>
+<td><strong>Group size</strong></td>
+<td>4–15 guests</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>Host&#39;s venue (we bring the sparkle to you)</td>
+</tr>
+<tr>
+<td><strong>Revenue model</strong></td>
+<td>Per-person service fee + jewelry material costs</td>
+</tr>
+<tr>
+<td><strong>Booking</strong></td>
+<td>Calendly integration</td>
+</tr>
+<tr>
+<td><strong>Upsell opportunity</strong></td>
+<td>Fine jewelry catalog cards, business cards, QR code to Shopify store</td>
+</tr>
+</tbody></table>
+<h3>4.4 Pop-Up Events &amp; Markets</h3>
+<p>Shine &amp; Bond maintains a consistent presence at Southern California markets and festivals:</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Day</th>
+<th>Time</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>714 Market Enclave</td>
+<td>Saturday</td>
+<td>12–5 PM</td>
+<td>Torrance, CA</td>
+</tr>
+<tr>
+<td>Good Vibe Market Enclave</td>
+<td>Saturday</td>
+<td>12–5 PM</td>
+<td>Torrance, CA</td>
+</tr>
+<tr>
+<td>Thursday Night Market</td>
+<td>Thursday</td>
+<td>5–9 PM</td>
+<td>Long Beach, CA</td>
+</tr>
+<tr>
+<td>Ventura Wine Festival</td>
+<td>Saturday</td>
+<td>11–6:30 PM</td>
+<td>Downtown Ventura, CA</td>
+</tr>
+</tbody></table>
+<p><strong>Cadence:</strong> 4–6 events per month across SoCal</p>
+<hr>
+<h2>5. Digital Platform Strategy</h2>
+<h3>5.1 Marketing Site (BUILT)</h3>
+<p>A high-conversion single-page marketing site has been built to serve as the brand&#39;s primary web presence and funnel visitors to the Shopify store and Calendly bookings.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Framework</strong></td>
+<td>Next.js 14 (App Router, static export)</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td>Tailwind CSS 3 with custom brand theme</td>
+</tr>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Single-page SPA with smooth scroll navigation</td>
+</tr>
+<tr>
+<td><strong>Fonts</strong></td>
+<td>Playfair Display (serif headings) + Inter (sans body)</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td><code>/shine-bond-site/</code></td>
+</tr>
+</tbody></table>
+<p><strong>Color Palette:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Hex</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dark Teal</td>
+<td><code>#1a3a32</code></td>
+<td>Navigation, footer, primary CTAs, section backgrounds</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td><code>#c9a84c</code></td>
+<td>Accents, underlines, icons, secondary CTAs</td>
+</tr>
+<tr>
+<td>Cream</td>
+<td><code>#faf7f2</code></td>
+<td>Backgrounds, cards</td>
+</tr>
+<tr>
+<td>Charcoal</td>
+<td><code>#2d2d2d</code></td>
+<td>Body text</td>
+</tr>
+<tr>
+<td>Rose</td>
+<td><code>#b76e79</code></td>
+<td>Subtle accent (badges, tags)</td>
+</tr>
+</tbody></table>
+<p><strong>Sections Implemented:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Section</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Announcement Bar</td>
+<td>Free shipping + lab diamond messaging</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sticky Navigation</td>
+<td>Logo, 6 nav links, Shop Now CTA, mobile drawer</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Hero</td>
+<td>Full-viewport brand photo, headline, dual CTAs</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Trust Bar</td>
+<td>4 value propositions (Lab Diamonds, 14K Gold, Free Shipping, Handcrafted)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The Collection</td>
+<td>24 products with category filter tabs, material badges, pricing</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bestsellers</td>
+<td>3 curated hero pieces with brand photography</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Our Story</td>
+<td>Founder narrative, 4 value pillars, Instagram CTA</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Permanent Jewelry</td>
+<td>3-step process, teal section, Calendly CTA</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Events &amp; Pop-Ups</td>
+<td>4 event cards + private party booking CTA</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Blog Preview</td>
+<td>3 placeholder articles (Education, Styling, Guide)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Contact &amp; FAQ</td>
+<td>Contact form + 8-question accordion</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Newsletter</td>
+<td>Email capture on teal background</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Footer</td>
+<td>Logo, social icons, shop/company links, tagline</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Mobile Sticky CTA</td>
+<td>Fixed bottom bar: &quot;Shop Now&quot; + &quot;Book a Party&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>External Links:</strong></p>
+<ul>
+<li>Shopify: <code>shineandbond.myshopify.com/collections/all</code></li>
+<li>Calendly: <code>calendly.com/info-shinebond/private-party-1/</code></li>
+<li>Instagram: <code>instagram.com/shinebond2/</code></li>
+<li>Phone: <code>844.572.2557</code></li>
+<li>Email: <code>info@shineandbond.com</code></li>
+</ul>
+<h3>5.2 Shopify Store</h3>
+<p>The Shopify store handles all e-commerce transactions — product catalog, checkout, payment processing, and order fulfillment.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>URL</strong></td>
+<td>shineandbond.myshopify.com</td>
+</tr>
+<tr>
+<td><strong>Products</strong></td>
+<td>24 SKUs across 4 categories</td>
+</tr>
+<tr>
+<td><strong>Payment</strong></td>
+<td>Credit/debit, Afterpay, Apple Pay, Google Pay</td>
+</tr>
+<tr>
+<td><strong>Shipping</strong></td>
+<td>Free on all orders, nationwide</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+<td>14 days, unworn items in original packaging</td>
+</tr>
+</tbody></table>
+<p><strong>Shopify Enhancements Needed:</strong></p>
+<ul>
+<li>Product descriptions (currently minimal)</li>
+<li>Multiple product images per SKU (close-up, on-model, lifestyle)</li>
+<li>Size guides for rings and bracelets</li>
+<li>Customer reviews integration</li>
+<li>Abandoned cart recovery emails</li>
+<li>Afterpay messaging on product pages</li>
+</ul>
+<h3>5.3 Social Media Strategy</h3>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Status</th>
+<th>Strategy</th>
+<th>Content Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Instagram</strong></td>
+<td>Active (1,972 followers)</td>
+<td>4–5 posts/week, Reels focus</td>
+<td>Product showcases, behind-the-scenes, events, lifestyle</td>
+</tr>
+<tr>
+<td><strong>TikTok</strong></td>
+<td>Planned</td>
+<td>Launch with welding videos</td>
+<td>Permanent jewelry process, GRWM, styling tips, event recaps</td>
+</tr>
+<tr>
+<td><strong>Facebook</strong></td>
+<td>Planned</td>
+<td>Cross-post from Instagram</td>
+<td>Community building, event promotion, marketplace</td>
+</tr>
+<tr>
+<td><strong>YouTube</strong></td>
+<td>Planned</td>
+<td>Long-form content</td>
+<td>Styling guides, &quot;how it&#39;s made,&quot; founder story</td>
+</tr>
+<tr>
+<td><strong>Pinterest</strong></td>
+<td>Planned (Phase 3)</td>
+<td>Product pins + styling boards</td>
+<td>Jewelry styling, gift guides, wedding boards</td>
+</tr>
+</tbody></table>
+<p><strong>TikTok Priority:</strong> Permanent jewelry welding videos are among the most viral content formats on the platform. A single viral video can drive thousands of booking inquiries. TikTok should be launched within 30 days.</p>
+<h3>5.4 SEO Strategy</h3>
+<p><strong>Primary Keywords (High Intent):</strong></p>
+<ul>
+<li>permanent jewelry Los Angeles</li>
+<li>permanent jewelry near me</li>
+<li>lab diamond jewelry</li>
+<li>14k gold jewelry online</li>
+<li>lab diamond tennis bracelet</li>
+<li>fine jewelry Los Angeles</li>
+</ul>
+<p><strong>Secondary Keywords (Long-Tail):</strong></p>
+<ul>
+<li>lab grown diamond necklace 14k gold</li>
+<li>permanent jewelry bachelorette party LA</li>
+<li>gold huggie earrings 14k</li>
+<li>what is permanent jewelry</li>
+<li>lab grown vs natural diamonds</li>
+</ul>
+<p><strong>Local SEO:</strong></p>
+<ul>
+<li>Google Business Profile optimization</li>
+<li>LA-specific landing pages</li>
+<li>Event/market location pages</li>
+<li>Customer reviews on Google</li>
+</ul>
+<hr>
+<h2>6. Content &amp; Blog Automation Strategy</h2>
+<h3>6.1 Why Blog Content Matters</h3>
+<p>For jewelry e-commerce, blog content drives 40–60% of organic search traffic through long-tail keyword targeting. Both Mejuri and Brilliant Earth use content marketing as their primary organic acquisition channel. Shine &amp; Bond&#39;s blog will serve three functions:</p>
+<ol>
+<li><strong>SEO acquisition</strong> — Capture search traffic for informational queries</li>
+<li><strong>Trust building</strong> — Educate customers on lab diamonds, gold types, and care</li>
+<li><strong>Product discovery</strong> — Internal links from educational content to product pages</li>
+</ol>
+<h3>6.2 Content Template Categories</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Example Topics</th>
+<th>Frequency</th>
+<th>SEO Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Education</strong></td>
+<td>&quot;Lab-Grown vs Natural Diamonds,&quot; &quot;Understanding 14K Gold Types,&quot; &quot;How to Measure Ring Size&quot;</td>
+<td>1/month</td>
+<td>High — informational intent</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td>&quot;5 Ways to Stack Gold Bracelets,&quot; &quot;Necklace Layering 101,&quot; &quot;Everyday Luxury: Jewelry for Work&quot;</td>
+<td>1/month</td>
+<td>Medium — inspirational intent</td>
+</tr>
+<tr>
+<td><strong>Care</strong></td>
+<td>&quot;How to Clean 14K Gold Jewelry,&quot; &quot;Permanent Jewelry Care Tips,&quot; &quot;Storing Fine Jewelry&quot;</td>
+<td>1/month</td>
+<td>Medium — post-purchase value</td>
+</tr>
+<tr>
+<td><strong>Event Recaps</strong></td>
+<td>&quot;[Market] Pop-Up Recap,&quot; &quot;Behind the Scenes at [Event]&quot;</td>
+<td>1-2/month</td>
+<td>Low SEO, high social proof</td>
+</tr>
+<tr>
+<td><strong>Gift Guides</strong></td>
+<td>&quot;Mother&#39;s Day Jewelry Gift Guide,&quot; &quot;Valentine&#39;s Day Picks,&quot; &quot;Holiday Guide by Budget&quot;</td>
+<td>Seasonal</td>
+<td>High — transactional intent</td>
+</tr>
+</tbody></table>
+<p><strong>Target:</strong> 2–4 posts/month, 36+ posts in Year 1</p>
+<h3>6.3 AI-Assisted Content Pipeline</h3>
+<pre><code>Topic Selection → Keyword Research → AI Draft → Brand Voice Review → Photography → Publish → Product Link
+</code></pre>
+<ol>
+<li><strong>Topic Selection:</strong> Based on keyword research, seasonal relevance, and product launch schedule</li>
+<li><strong>Keyword Research:</strong> 1 primary keyword (500+ monthly searches), 2-3 secondary keywords per post</li>
+<li><strong>AI Draft:</strong> Generate initial draft using brand voice guidelines, product data, and SEO targets</li>
+<li><strong>Brand Voice Review:</strong> Founder review for tone, accuracy, and brand alignment</li>
+<li><strong>Photography:</strong> Add product images, lifestyle shots, or infographics</li>
+<li><strong>Publish:</strong> Post to blog with internal links to 2-3 relevant products</li>
+<li><strong>Distribute:</strong> Share to Instagram Stories, email newsletter, and Pinterest</li>
+</ol>
+<h3>6.4 Blog Infrastructure</h3>
+<p><strong>Current:</strong> Placeholder blog section in marketing site (3 static cards, no click-through)</p>
+<p><strong>Phase 1:</strong> Build blog as data-driven component reading from JSON/markdown content files in the project</p>
+<p><strong>Phase 2:</strong> Migrate to headless CMS (Contentful or Sanity) for non-technical content management</p>
+<h3>6.5 Launch Articles (3 Initial Posts)</h3>
+<ol>
+<li><p><strong>&quot;The Ultimate Guide to Lab-Grown Diamonds&quot;</strong> (Education)</p>
+<ul>
+<li>Primary keyword: &quot;lab grown diamonds&quot;</li>
+<li>What they are, how they&#39;re made, why they&#39;re identical to mined diamonds, ethical advantages, cost savings</li>
+<li>Internal links: all lab diamond products</li>
+</ul>
+</li>
+<li><p><strong>&quot;How to Style Gold Jewelry for Every Occasion&quot;</strong> (Styling)</p>
+<ul>
+<li>Primary keyword: &quot;how to style gold jewelry&quot;</li>
+<li>Boardroom to brunch layering tips, stacking guides, metal mixing rules</li>
+<li>Internal links: necklaces, bracelets, earrings</li>
+</ul>
+</li>
+<li><p><strong>&quot;What is Permanent Jewelry? Everything You Need to Know&quot;</strong> (Guide)</p>
+<ul>
+<li>Primary keyword: &quot;what is permanent jewelry&quot;</li>
+<li>How it works, what to expect, care tips, why LA is getting linked</li>
+<li>Internal link: permanent jewelry section + Calendly booking</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>7. Marketing &amp; Growth Strategy</h2>
+<h3>7.1 Phase 1: Foundation (Q1 2026) — Current</h3>
+<p><strong>Objective:</strong> Establish brand presence, build initial audience, create content foundation</p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Action</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Instagram</td>
+<td>Consistent posting (4-5/week), Reels</td>
+<td>3,000 followers</td>
+</tr>
+<tr>
+<td>Pop-Ups</td>
+<td>4-6 events/month across SoCal</td>
+<td>100+ contacts/month</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Newsletter signup via website</td>
+<td>500 subscribers</td>
+</tr>
+<tr>
+<td>Blog</td>
+<td>Launch 3 initial articles</td>
+<td>Indexed by Google</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Set up Analytics, Search Console, Business Profile</td>
+<td>Baseline data</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>Enhance product descriptions and images</td>
+<td>All 24 SKUs optimized</td>
+</tr>
+</tbody></table>
+<h3>7.2 Phase 2: Acceleration (Q2–Q3 2026)</h3>
+<p><strong>Objective:</strong> Scale audience, drive consistent online revenue, diversify channels</p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Action</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TikTok</td>
+<td>Launch account, 3-5 videos/week</td>
+<td>3,000 followers</td>
+</tr>
+<tr>
+<td>Influencers</td>
+<td>10 LA-based micro-influencers (5K-50K followers)</td>
+<td>15 posts/month</td>
+</tr>
+<tr>
+<td>Google Ads</td>
+<td>Branded keywords + product category campaigns</td>
+<td>5:1 ROAS</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Welcome series, abandoned cart, post-purchase automations</td>
+<td>30% open rate</td>
+</tr>
+<tr>
+<td>Blog</td>
+<td>Monthly cadence (4 posts/month)</td>
+<td>500 organic visits/month</td>
+</tr>
+<tr>
+<td>Referral</td>
+<td>Launch referral program (give $25, get $25)</td>
+<td>50 referrals/month</td>
+</tr>
+<tr>
+<td>Reviews</td>
+<td>Integrate customer reviews on Shopify + website</td>
+<td>50+ reviews</td>
+</tr>
+</tbody></table>
+<h3>7.3 Phase 3: Scale (Q4 2026 – Q1 2027)</h3>
+<p><strong>Objective:</strong> Achieve sustainable growth, expand market, build brand authority</p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Action</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paid Social</td>
+<td>Facebook/Instagram ads</td>
+<td>$5K/month budget, 4:1 ROAS</td>
+</tr>
+<tr>
+<td>Pinterest</td>
+<td>Commerce integration, shoppable pins</td>
+<td>1,000 monthly saves</td>
+</tr>
+<tr>
+<td>PR</td>
+<td>Local LA publications → national jewelry press</td>
+<td>3 features</td>
+</tr>
+<tr>
+<td>Affiliate</td>
+<td>Launch affiliate program for jewelry bloggers</td>
+<td>20 affiliates</td>
+</tr>
+<tr>
+<td>Seasonal</td>
+<td>Campaign playbook: Mother&#39;s Day, Valentine&#39;s, Holiday</td>
+<td>30% revenue lift in Q4</td>
+</tr>
+<tr>
+<td>Loyalty</td>
+<td>Customer loyalty program (points, tiers)</td>
+<td>20% repeat purchase rate</td>
+</tr>
+<tr>
+<td>Expansion</td>
+<td>Catalog expansion to 40+ SKUs</td>
+<td>Fill mid-tier gap</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. Technology Stack</h2>
+<h3>8.1 Current Stack</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Next.js 14 + Tailwind CSS</td>
+<td>Marketing / landing site</td>
+<td>✅ Built</td>
+</tr>
+<tr>
+<td>Shopify</td>
+<td>E-commerce, checkout, inventory</td>
+<td>✅ Live</td>
+</tr>
+<tr>
+<td>Calendly</td>
+<td>Permanent jewelry &amp; party bookings</td>
+<td>✅ Live</td>
+</tr>
+<tr>
+<td>Instagram</td>
+<td>Social media (primary)</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>Google Fonts (Playfair Display + Inter)</td>
+<td>Brand typography</td>
+<td>✅ Implemented</td>
+</tr>
+</tbody></table>
+<h3>8.2 Planned Integrations</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Priority</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Google Analytics 4</td>
+<td>Website analytics</td>
+<td>High</td>
+<td>Q1 2026</td>
+</tr>
+<tr>
+<td>Google Search Console</td>
+<td>SEO monitoring</td>
+<td>High</td>
+<td>Q1 2026</td>
+</tr>
+<tr>
+<td>Google Business Profile</td>
+<td>Local SEO</td>
+<td>High</td>
+<td>Q1 2026</td>
+</tr>
+<tr>
+<td>Klaviyo</td>
+<td>Email marketing &amp; automation</td>
+<td>High</td>
+<td>Q1 2026</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>Social media channel</td>
+<td>High</td>
+<td>Q1 2026</td>
+</tr>
+<tr>
+<td>Judge.me or Loox</td>
+<td>Shopify product reviews</td>
+<td>Medium</td>
+<td>Q2 2026</td>
+</tr>
+<tr>
+<td>Contentful or Sanity</td>
+<td>Headless CMS for blog</td>
+<td>Medium</td>
+<td>Q3 2026</td>
+</tr>
+<tr>
+<td>n8n or Zapier</td>
+<td>Workflow automation (form → email, order → notification)</td>
+<td>Medium</td>
+<td>Q2 2026</td>
+</tr>
+<tr>
+<td>Facebook Pixel + Meta Business Suite</td>
+<td>Paid social advertising</td>
+<td>Medium</td>
+<td>Q2 2026</td>
+</tr>
+<tr>
+<td>Pinterest Business</td>
+<td>Commerce pins</td>
+<td>Low</td>
+<td>Q4 2026</td>
+</tr>
+<tr>
+<td>ReferralCandy or Smile.io</td>
+<td>Referral/loyalty program</td>
+<td>Low</td>
+<td>Q3 2026</td>
+</tr>
+</tbody></table>
+<h3>8.3 Brand Design System</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Primary Font</strong></td>
+<td>Playfair Display (headings, luxury serif)</td>
+</tr>
+<tr>
+<td><strong>Secondary Font</strong></td>
+<td>Inter (body text, navigation, clean sans-serif)</td>
+</tr>
+<tr>
+<td><strong>Dark Teal</strong></td>
+<td><code>#1a3a32</code> — nav, footer, CTAs, section backgrounds</td>
+</tr>
+<tr>
+<td><strong>Gold</strong></td>
+<td><code>#c9a84c</code> — accents, underlines, icons, buttons</td>
+</tr>
+<tr>
+<td><strong>Cream</strong></td>
+<td><code>#faf7f2</code> — backgrounds</td>
+</tr>
+<tr>
+<td><strong>Charcoal</strong></td>
+<td><code>#2d2d2d</code> — body text</td>
+</tr>
+<tr>
+<td><strong>Rose</strong></td>
+<td><code>#b76e79</code> — subtle accents, badges</td>
+</tr>
+<tr>
+<td><strong>Logo (Light)</strong></td>
+<td>White wordmark on dark background (1920x1080 PNG)</td>
+</tr>
+<tr>
+<td><strong>Logo (Dark)</strong></td>
+<td>Black wordmark on light background (1920x1080 SVG)</td>
+</tr>
+<tr>
+<td><strong>Logo Mark</strong></td>
+<td>Cursive &quot;Shine &amp; Bond&quot; with diamond icon replacing &quot;o&quot; in &quot;Bond&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Pricing Strategy &amp; Unit Economics</h2>
+<h3>9.1 Pricing Architecture</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Range</th>
+<th>SKUs</th>
+<th>% of Catalog</th>
+<th>Customer Segment</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Entry</strong></td>
+<td>$400–$999</td>
+<td>7</td>
+<td>29%</td>
+<td>Gift givers, first-time buyers, event browsers</td>
+<td>Acquisition — low-friction first purchase</td>
+</tr>
+<tr>
+<td><strong>Mid-Tier</strong></td>
+<td>$1,000–$1,999</td>
+<td>3</td>
+<td>13%</td>
+<td>Self-purchasers, meaningful gifts</td>
+<td><strong>EXPANSION PRIORITY</strong> — highest-volume price point for DTC jewelry</td>
+</tr>
+<tr>
+<td><strong>Core</strong></td>
+<td>$2,000–$2,999</td>
+<td>7</td>
+<td>29%</td>
+<td>Self-purchasers, collectors</td>
+<td>Bread-and-butter — repeat purchase tier</td>
+</tr>
+<tr>
+<td><strong>Premium</strong></td>
+<td>$3,000–$4,000</td>
+<td>7</td>
+<td>29%</td>
+<td>Collectors, milestone gifts</td>
+<td>Margin driver — statement pieces</td>
+</tr>
+</tbody></table>
+<h3>9.2 Key Pricing Decisions</h3>
+<ul>
+<li><strong>Free shipping on all orders</strong> — built into product margins, eliminates cart abandonment friction</li>
+<li><strong>Afterpay integration</strong> — 4 interest-free installments, critical for $1,000+ price points (e.g., $4,000 tennis bracelet = $1,000/payment)</li>
+<li><strong>No discounting strategy</strong> — maintain brand positioning; use gifting (cleaning cloth, jewelry box) instead of price cuts</li>
+<li><strong>Permanent jewelry pricing</strong> — recommend publishing &quot;Starting at $75&quot; to reduce booking friction</li>
+</ul>
+<h3>9.3 Average Order Value Targets</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current Estimate</th>
+<th>6-Month Target</th>
+<th>12-Month Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AOV (all orders)</td>
+<td>$1,200</td>
+<td>$1,500</td>
+<td>$1,800</td>
+</tr>
+<tr>
+<td>AOV (gift purchases)</td>
+<td>$800</td>
+<td>$1,000</td>
+<td>$1,200</td>
+</tr>
+<tr>
+<td>AOV (self-purchase)</td>
+<td>$1,500</td>
+<td>$1,800</td>
+<td>$2,200</td>
+</tr>
+<tr>
+<td>Items per order</td>
+<td>1.0</td>
+<td>1.2</td>
+<td>1.4</td>
+</tr>
+</tbody></table>
+<h3>9.4 Catalog Expansion Recommendations</h3>
+<p><strong>Immediate (Q2 2026) — Fill the $1,000–$1,999 Gap:</strong></p>
+<ul>
+<li>14K gold pendant necklaces ($1,200–$1,500)</li>
+<li>Lab diamond stud earrings in multiple carat sizes ($1,000–$1,800)</li>
+<li>Delicate lab diamond bar bracelet ($1,200)</li>
+<li>Solitaire lab diamond ring ($1,400–$1,800)</li>
+</ul>
+<p><strong>Short-Term (Q3 2026) — Expand Earrings:</strong></p>
+<ul>
+<li>Earrings are the lowest-price, highest-volume category</li>
+<li>Only 4 SKUs currently, all yellow gold</li>
+<li>Add: White gold huggies, rose gold hoops, diamond studs, drop earrings</li>
+<li>Target: 10+ earring SKUs</li>
+</ul>
+<hr>
+<h2>10. Revenue Model &amp; Financial Projections</h2>
+<h3>10.1 Revenue Streams</h3>
+<table>
+<thead>
+<tr>
+<th>Stream</th>
+<th>Description</th>
+<th>% of Revenue (Y1 Target)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>E-Commerce</strong></td>
+<td>Online jewelry sales via Shopify</td>
+<td>65–70%</td>
+</tr>
+<tr>
+<td><strong>Permanent Jewelry Events</strong></td>
+<td>Pop-up market revenue (per-person fee + materials)</td>
+<td>15–20%</td>
+</tr>
+<tr>
+<td><strong>Private Parties</strong></td>
+<td>Group booking revenue</td>
+<td>10–15%</td>
+</tr>
+<tr>
+<td><strong>Custom Design</strong></td>
+<td>Bespoke consultations (future)</td>
+<td>&lt;5%</td>
+</tr>
+</tbody></table>
+<h3>10.2 Year 1 Revenue Projections (Conservative)</h3>
+<p><strong>E-Commerce</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Q1</th>
+<th>Q2</th>
+<th>Q3</th>
+<th>Q4</th>
+<th>Year 1 Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Orders/week</td>
+<td>2–3</td>
+<td>4–6</td>
+<td>6–8</td>
+<td>8–12</td>
+<td>—</td>
+</tr>
+<tr>
+<td>AOV</td>
+<td>$1,200</td>
+<td>$1,300</td>
+<td>$1,400</td>
+<td>$1,500</td>
+<td>$1,350 avg</td>
+</tr>
+<tr>
+<td>Quarterly revenue</td>
+<td>$7K–$12K</td>
+<td>$20K–$30K</td>
+<td>$30K–$45K</td>
+<td>$45K–$70K</td>
+<td><strong>$102K–$157K</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Permanent Jewelry Events</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Monthly Estimate</th>
+<th>Annual</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Events/month</td>
+<td>4–8</td>
+<td>48–96</td>
+</tr>
+<tr>
+<td>Guests/event</td>
+<td>8–15</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Revenue/event</td>
+<td>$400–$800</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Monthly revenue</td>
+<td>$1,600–$6,400</td>
+<td><strong>$19K–$77K</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Private Parties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Monthly Estimate</th>
+<th>Annual</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Parties/month</td>
+<td>2–4</td>
+<td>24–48</td>
+</tr>
+<tr>
+<td>Guests/party</td>
+<td>6–12</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Revenue/party</td>
+<td>$600–$1,200</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Monthly revenue</td>
+<td>$1,200–$4,800</td>
+<td><strong>$14K–$58K</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Year 1 Total Revenue Projection: $135K–$292K</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>E-Commerce</th>
+<th>Events</th>
+<th>Parties</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Conservative</td>
+<td>$102K</td>
+<td>$19K</td>
+<td>$14K</td>
+<td><strong>$135K</strong></td>
+</tr>
+<tr>
+<td>Base</td>
+<td>$130K</td>
+<td>$45K</td>
+<td>$30K</td>
+<td><strong>$205K</strong></td>
+</tr>
+<tr>
+<td>Optimistic</td>
+<td>$157K</td>
+<td>$77K</td>
+<td>$58K</td>
+<td><strong>$292K</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>11. Competitive Analysis</h2>
+<h3>11.1 Competitive Landscape Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Shine &amp; Bond</th>
+<th>Mejuri</th>
+<th>Brilliant Earth</th>
+<th>Gorjana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Founded</strong></td>
+<td>2024</td>
+<td>2015</td>
+<td>2005</td>
+<td>2004</td>
+</tr>
+<tr>
+<td><strong>Price range</strong></td>
+<td>$400–$4,000</td>
+<td>$40–$3,000</td>
+<td>$200–$50,000+</td>
+<td>$48–$500</td>
+</tr>
+<tr>
+<td><strong>Primary material</strong></td>
+<td>14K solid gold</td>
+<td>14K solid gold</td>
+<td>14K–18K gold, platinum</td>
+<td>Gold plated/vermeil</td>
+</tr>
+<tr>
+<td><strong>Lab diamonds</strong></td>
+<td>Yes (primary)</td>
+<td>Some offerings</td>
+<td>Yes (primary)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Permanent jewelry</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Private parties</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Pop-up events</strong></td>
+<td>Yes (SoCal)</td>
+<td>Limited</td>
+<td>No (showrooms)</td>
+<td>Yes (national)</td>
+</tr>
+<tr>
+<td><strong>Physical retail</strong></td>
+<td>Pop-ups only</td>
+<td>4 stores</td>
+<td>37+ showrooms</td>
+<td>30+ stores</td>
+</tr>
+<tr>
+<td><strong>Blog/content</strong></td>
+<td>Planned</td>
+<td>Extensive (100+ articles)</td>
+<td>Extensive (500+ articles)</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td><strong>Social following</strong></td>
+<td>~2K Instagram</td>
+<td>1.2M+ Instagram</td>
+<td>600K+ Instagram</td>
+<td>700K+ Instagram</td>
+</tr>
+<tr>
+<td><strong>Afterpay/BNPL</strong></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Free shipping</strong></td>
+<td>All orders</td>
+<td>$100+ threshold</td>
+<td>All orders</td>
+<td>$50+ threshold</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+<td>14 days</td>
+<td>60 days</td>
+<td>30 days</td>
+<td>14 days</td>
+</tr>
+</tbody></table>
+<h3>11.2 Competitive Advantages</h3>
+<ol>
+<li><strong>Dual-model uniqueness:</strong> No competitor in the $400–$4,000 fine jewelry tier combines e-commerce with permanent jewelry and private party services</li>
+<li><strong>Lab diamond leadership:</strong> Unlike Gorjana (no lab diamonds) and Mejuri (lab diamonds as a secondary option), Shine &amp; Bond leads with lab-grown diamonds as the default</li>
+<li><strong>14K solid gold at all price points:</strong> Gorjana uses gold plating/vermeil; Shine &amp; Bond offers solid gold from the $400 entry point</li>
+<li><strong>Founder-led personal connection:</strong> Two-woman team creates authentic customer relationships that large brands cannot replicate</li>
+<li><strong>SoCal community moat:</strong> Deep local event presence creates brand loyalty that&#39;s difficult for national brands to compete with</li>
+</ol>
+<h3>11.3 Competitive Vulnerabilities</h3>
+<ol>
+<li><strong>Scale disadvantage:</strong> Competitors have significantly larger marketing budgets and established audiences</li>
+<li><strong>Content gap:</strong> Mejuri and Brilliant Earth have years of SEO-optimized blog content; Shine &amp; Bond is starting from zero</li>
+<li><strong>Return policy:</strong> 14-day return window is shorter than Mejuri (60 days) and Brilliant Earth (30 days)</li>
+<li><strong>Product photography:</strong> Competitors invest heavily in professional product photography; Shine &amp; Bond&#39;s product images need improvement</li>
+<li><strong>Social proof:</strong> No customer reviews, testimonials, or UGC program currently</li>
+</ol>
+<hr>
+<h2>12. Product Roadmap &amp; Milestones</h2>
+<h3>Phase 1: Foundation (Q1 2026) — CURRENT</h3>
+<p><strong>Goal:</strong> Launch core digital infrastructure and establish consistent brand presence</p>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Status</th>
+<th>Owner</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Shopify store launch (24 SKUs)</td>
+<td>✅ Complete</td>
+<td>Founders</td>
+<td>Launched March 7, 2026</td>
+</tr>
+<tr>
+<td>Marketing site built</td>
+<td>✅ Complete</td>
+<td>Dev</td>
+<td>Next.js 14 + Tailwind CSS</td>
+</tr>
+<tr>
+<td>Brand photography complete</td>
+<td>✅ Complete</td>
+<td>Founders</td>
+<td>Hero, lifestyle, product images</td>
+</tr>
+<tr>
+<td>Connect contact form to email service</td>
+<td>☐ Pending</td>
+<td>Dev</td>
+<td>n8n webhook or Formspree</td>
+</tr>
+<tr>
+<td>Set up Google Analytics 4</td>
+<td>☐ Pending</td>
+<td>Dev</td>
+<td>Track site traffic + conversions</td>
+</tr>
+<tr>
+<td>Set up Google Search Console</td>
+<td>☐ Pending</td>
+<td>Dev</td>
+<td>Monitor SEO performance</td>
+</tr>
+<tr>
+<td>Optimize Google Business Profile</td>
+<td>☐ Pending</td>
+<td>Founders</td>
+<td>Hours, photos, categories, reviews</td>
+</tr>
+<tr>
+<td>Launch first 3 blog posts</td>
+<td>☐ Pending</td>
+<td>Content</td>
+<td>Lab diamonds, styling guide, permanent jewelry</td>
+</tr>
+<tr>
+<td>Create TikTok account</td>
+<td>☐ Pending</td>
+<td>Founders</td>
+<td>First 10 videos (welding, GRWM, events)</td>
+</tr>
+<tr>
+<td>Set up email marketing (Klaviyo)</td>
+<td>☐ Pending</td>
+<td>Dev</td>
+<td>Welcome series, newsletter template</td>
+</tr>
+<tr>
+<td>Enhance Shopify product descriptions</td>
+<td>☐ Pending</td>
+<td>Founders</td>
+<td>All 24 SKUs with detailed descriptions</td>
+</tr>
+</tbody></table>
+<h3>Phase 2: Growth (Q2–Q3 2026)</h3>
+<p><strong>Goal:</strong> Scale audience, drive consistent revenue, build content flywheel</p>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Timeline</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Expand catalog to 35+ SKUs (fill mid-tier gap)</td>
+<td>Q2</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Launch referral program (give $25, get $25)</td>
+<td>Q2</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>10 micro-influencer partnerships signed</td>
+<td>Q2</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Achieve 4 blog posts/month cadence</td>
+<td>Q2</td>
+<td>Content</td>
+</tr>
+<tr>
+<td>Launch Google Ads (branded + product keywords)</td>
+<td>Q2</td>
+<td>Marketing</td>
+</tr>
+<tr>
+<td>Publish permanent jewelry pricing on site</td>
+<td>Q2</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>Integrate customer reviews on Shopify</td>
+<td>Q2</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>Email automation: abandoned cart, post-purchase, winback</td>
+<td>Q2</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>Expand earring category to 10+ SKUs</td>
+<td>Q3</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Launch Facebook/Instagram paid ads</td>
+<td>Q3</td>
+<td>Marketing</td>
+</tr>
+<tr>
+<td>Pinterest Business account setup</td>
+<td>Q3</td>
+<td>Marketing</td>
+</tr>
+</tbody></table>
+<h3>Phase 3: Scale (Q4 2026 – Q1 2027)</h3>
+<p><strong>Goal:</strong> Achieve sustainable profitability, expand market reach, build operational foundation</p>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Timeline</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Catalog reaches 50+ SKUs</td>
+<td>Q4 2026</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Physical studio/showroom in LA (lease signed)</td>
+<td>Q4 2026</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Hire first employee (operations/fulfillment)</td>
+<td>Q4 2026</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Launch customer loyalty program</td>
+<td>Q4 2026</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>Seasonal campaign playbook established</td>
+<td>Q4 2026</td>
+<td>Marketing</td>
+</tr>
+<tr>
+<td>PR placement in 3+ publications</td>
+<td>Q4 2026</td>
+<td>Founders</td>
+</tr>
+<tr>
+<td>Headless CMS for blog (Contentful/Sanity)</td>
+<td>Q1 2027</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>Affiliate program launch (20 affiliates)</td>
+<td>Q1 2027</td>
+<td>Marketing</td>
+</tr>
+<tr>
+<td>National expansion (beyond SoCal events)</td>
+<td>Q1 2027</td>
+<td>Founders</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>13. Success Metrics &amp; KPIs</h2>
+<h3>13.1 North Star Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>Current</th>
+<th>6-Month Target</th>
+<th>12-Month Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Monthly Revenue</strong></td>
+<td>Total revenue across all streams</td>
+<td>$0</td>
+<td>$8K–$15K</td>
+<td>$25K–$40K</td>
+</tr>
+<tr>
+<td><strong>Customer Acquisition Cost</strong></td>
+<td>Total marketing spend / new customers</td>
+<td>N/A</td>
+<td>&lt;$80</td>
+<td>&lt;$60</td>
+</tr>
+<tr>
+<td><strong>Customer Lifetime Value</strong></td>
+<td>Total revenue per customer over 24 months</td>
+<td>N/A</td>
+<td>$1,800</td>
+<td>$2,500</td>
+</tr>
+</tbody></table>
+<h3>13.2 E-Commerce KPIs</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>6-Month Target</th>
+<th>12-Month Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Monthly website visitors</td>
+<td>~0</td>
+<td>5,000</td>
+<td>15,000</td>
+</tr>
+<tr>
+<td>Website conversion rate</td>
+<td>N/A</td>
+<td>2–3%</td>
+<td>3–5%</td>
+</tr>
+<tr>
+<td>Average order value</td>
+<td>N/A</td>
+<td>$1,200</td>
+<td>$1,500</td>
+</tr>
+<tr>
+<td>Cart abandonment rate</td>
+<td>N/A</td>
+<td>&lt;70%</td>
+<td>&lt;65%</td>
+</tr>
+<tr>
+<td>Return rate</td>
+<td>N/A</td>
+<td>&lt;8%</td>
+<td>&lt;5%</td>
+</tr>
+<tr>
+<td>Repeat purchase rate</td>
+<td>N/A</td>
+<td>10%</td>
+<td>20%</td>
+</tr>
+</tbody></table>
+<h3>13.3 Marketing KPIs</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>6-Month Target</th>
+<th>12-Month Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Instagram followers</td>
+<td>1,972</td>
+<td>5,000</td>
+<td>15,000</td>
+</tr>
+<tr>
+<td>TikTok followers</td>
+<td>0</td>
+<td>3,000</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>Email subscribers</td>
+<td>0</td>
+<td>1,000</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>Email open rate</td>
+<td>N/A</td>
+<td>30%</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>Blog organic traffic</td>
+<td>0</td>
+<td>500/month</td>
+<td>3,000/month</td>
+</tr>
+<tr>
+<td>Google ranking (primary keywords)</td>
+<td>Unranked</td>
+<td>Top 50</td>
+<td>Top 20</td>
+</tr>
+</tbody></table>
+<h3>13.4 Service KPIs</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>6-Month Target</th>
+<th>12-Month Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Monthly pop-up events</td>
+<td>~4</td>
+<td>6–8</td>
+<td>8–12</td>
+</tr>
+<tr>
+<td>Private parties/month</td>
+<td>~2</td>
+<td>4–6</td>
+<td>8–10</td>
+</tr>
+<tr>
+<td>Event-to-online conversion rate</td>
+<td>N/A</td>
+<td>5%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Party booking-to-completion rate</td>
+<td>N/A</td>
+<td>85%</td>
+<td>90%</td>
+</tr>
+</tbody></table>
+<h3>13.5 Content KPIs</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>6-Month Target</th>
+<th>12-Month Target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Blog posts published</td>
+<td>0</td>
+<td>12</td>
+<td>36</td>
+</tr>
+<tr>
+<td>Avg. time on page (blog)</td>
+<td>N/A</td>
+<td>2:30 min</td>
+<td>3:30 min</td>
+</tr>
+<tr>
+<td>Blog → product click-through</td>
+<td>N/A</td>
+<td>5%</td>
+<td>10%</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>14. Risks &amp; Mitigations</h2>
+<h3>14.1 Business Risks</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Severity</th>
+<th>Probability</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>High-value inventory exposure</strong></td>
+<td>High</td>
+<td>Medium</td>
+<td>Start with made-to-order for $2,500+ items; keep 1-2 units of popular styles in stock; use Afterpay to reduce price sensitivity</td>
+</tr>
+<tr>
+<td><strong>Competition from funded DTC brands</strong></td>
+<td>High</td>
+<td>High</td>
+<td>Lean into local community moat, personal founder connection, and dual-model differentiation; avoid competing on price</td>
+</tr>
+<tr>
+<td><strong>Two-person team capacity</strong></td>
+<td>Medium</td>
+<td>High</td>
+<td>Prioritize automation (email, blog, social scheduling); hire first employee by Q4 2026; use AI tools for content generation</td>
+</tr>
+<tr>
+<td><strong>Seasonal demand concentration</strong></td>
+<td>Medium</td>
+<td>High</td>
+<td>Build seasonal campaign playbook; maintain event calendar year-round; launch gift guides 6-8 weeks before holidays</td>
+</tr>
+<tr>
+<td><strong>Lab diamond price erosion</strong></td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Shift brand messaging from &quot;cost savings&quot; to &quot;ethical choice + design craftsmanship&quot;; lab diamond is the material, not the value prop</td>
+</tr>
+</tbody></table>
+<h3>14.2 Digital Risks</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Severity</th>
+<th>Probability</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Social media algorithm changes</strong></td>
+<td>Medium</td>
+<td>High</td>
+<td>Diversify: build email list and SEO as owned channels that don&#39;t depend on algorithms</td>
+</tr>
+<tr>
+<td><strong>Shopify dependency</strong></td>
+<td>Low</td>
+<td>Low</td>
+<td>Shopify is the industry standard for DTC jewelry; migration risk is low</td>
+</tr>
+<tr>
+<td><strong>Website SEO takes time</strong></td>
+<td>Low</td>
+<td>Certain</td>
+<td>SEO is a 6-12 month investment; supplement with Google Ads for immediate visibility</td>
+</tr>
+<tr>
+<td><strong>Contact form not connected</strong></td>
+<td>Medium</td>
+<td>Certain</td>
+<td>Immediate action: connect form to email service (n8n, Formspree, or Klaviyo) before driving traffic</td>
+</tr>
+</tbody></table>
+<h3>14.3 Operational Risks</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Severity</th>
+<th>Probability</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Product quality issues</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>Maintain strict QC process; offer free repair/replacement for manufacturing defects</td>
+</tr>
+<tr>
+<td><strong>Event cancellations</strong></td>
+<td>Low</td>
+<td>Medium</td>
+<td>Maintain 6+ events/month so individual cancellations don&#39;t impact significantly</td>
+</tr>
+<tr>
+<td><strong>Shipping damage</strong></td>
+<td>Medium</td>
+<td>Low</td>
+<td>Premium packaging, insurance on orders over $1,000, immediate replacement policy</td>
+</tr>
+<tr>
+<td><strong>Negative reviews</strong></td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Proactive post-purchase follow-up; respond to all reviews within 24 hours; offer resolution before review is posted</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Appendix A: FAQ Content (Implemented on Site)</h2>
+<ol>
+<li><strong>What metals does Shine &amp; Bond use?</strong> — 14K Yellow Gold, 14K White Gold, 14K Rose Gold (fine jewelry); gold-filled and sterling silver (permanent jewelry)</li>
+<li><strong>Are your diamonds real?</strong> — Yes, lab-grown diamonds that are chemically, physically, and optically identical to mined diamonds</li>
+<li><strong>Do you ship nationwide?</strong> — Yes, free shipping on all US orders in signature packaging</li>
+<li><strong>What is your return policy?</strong> — 14-day returns for unworn items in original packaging</li>
+<li><strong>What is permanent jewelry?</strong> — Custom-fit welded chain with no clasp, designed to stay on forever</li>
+<li><strong>Can I shower or swim with permanent jewelry?</strong> — Gold-filled: yes; sterling silver: may tarnish but can be cleaned</li>
+<li><strong>How do I book a private party?</strong> — Via Calendly link or direct contact</li>
+<li><strong>Do you offer custom designs?</strong> — Yes, custom design consultations for bespoke pieces</li>
+</ol>
+<h2>Appendix B: Brand Voice Guidelines</h2>
+<p><strong>Tone:</strong> Elegant, warm, and intentional — never cold or corporate</p>
+<p><strong>Voice Attributes:</strong></p>
+<ul>
+<li>Aspirational but accessible (not pretentious)</li>
+<li>Confident but inviting (not exclusive)</li>
+<li>Educational but conversational (not academic)</li>
+<li>Personal but professional (not overly casual)</li>
+</ul>
+<p><strong>Key Phrases:</strong></p>
+<ul>
+<li>&quot;Timeless jewelry, crafted with intention&quot;</li>
+<li>&quot;Let&#39;s Get Linked Together&quot;</li>
+<li>&quot;Designed to be your forever pieces&quot;</li>
+<li>&quot;Fine jewelry for every chapter of your story&quot;</li>
+<li>&quot;Ethically created, brilliantly real&quot;</li>
+</ul>
+<p><strong>Avoid:</strong></p>
+<ul>
+<li>&quot;Cheap&quot; or &quot;affordable&quot; (use &quot;accessible&quot; or &quot;attainable&quot;)</li>
+<li>&quot;Fake diamonds&quot; (use &quot;lab-grown&quot; or &quot;ethically created&quot;)</li>
+<li>Excessive urgency or pressure tactics</li>
+<li>Generic luxury clichés (&quot;the finer things,&quot; &quot;indulge yourself&quot;)</li>
+</ul>
+<hr>
+<p><em>Document prepared February 2026. Revision schedule: Quarterly review and update.</em></p>
+
+
+    <div class="footer">
+      <div class="brand">Shine &amp; Bond Jewelry</div>
+      <div>"Timeless jewelry, crafted with intention."</div>
+    </div>
+  </div>
+
+</body>
+</html>
