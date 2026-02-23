@@ -343,16 +343,16 @@
     <div class="header-bar">
       <h1>Shine &amp; Bond Jewelry</h1>
       <div class="subtitle">Product Requirements Document</div>
-      <div class="build-time">Generated: February 22, 2026 at 07:46 PM PST</div>
+      <div class="build-time">Generated: February 23, 2026 at 03:54 PM PST</div>
     </div>
 
     
 <h2>Shine &amp; Bond Jewelry</h2>
-<p><strong>Document Version:</strong> 1.0
-<strong>Date:</strong> February 19, 2026
+<p><strong>Document Version:</strong> 1.1
+<strong>Date:</strong> February 23, 2026 (updated from v1.0, February 19, 2026)
 <strong>Company:</strong> Shine &amp; Bond Jewelry
 <strong>Location:</strong> Los Angeles, California
-<strong>Website:</strong> shineandbond.myshopify.com
+<strong>Website:</strong> shineandbond.com
 <strong>Contact:</strong> <a href="mailto:info@shineandbond.com">info@shineandbond.com</a> | 844.572.2557</p>
 <hr>
 <h2>Table of Contents</h2>
@@ -395,7 +395,35 @@
 </tr>
 <tr>
 <td>Marketing site (Next.js 14)</td>
-<td>Built — 10+ section SPA</td>
+<td>Live — deployed to Cloudflare Pages at <code>shineandbond.com</code></td>
+</tr>
+<tr>
+<td>Custom domain</td>
+<td>Live — <code>shineandbond.com</code> on Cloudflare Pages</td>
+</tr>
+<tr>
+<td>Google Analytics 4</td>
+<td>Live — tracking ID <code>G-SLN0X80WY2</code></td>
+</tr>
+<tr>
+<td>Klaviyo email marketing</td>
+<td>Live — newsletter + contact form CRM lists</td>
+</tr>
+<tr>
+<td>Contact form (email)</td>
+<td>Live — Web3Forms delivers to <code>info@shineandbond.com</code></td>
+</tr>
+<tr>
+<td>Contact form (SMS)</td>
+<td>Built — Twilio via Cloudflare Pages Function, pending A2P 10DLC approval</td>
+</tr>
+<tr>
+<td>Blog (3 articles)</td>
+<td>Live — markdown-based with AI-generated thumbnails</td>
+</tr>
+<tr>
+<td>Privacy Policy &amp; Terms</td>
+<td>Live — <code>/privacy</code> and <code>/terms</code> pages</td>
 </tr>
 <tr>
 <td>Instagram (@shinebond2)</td>
@@ -412,18 +440,6 @@
 <tr>
 <td>TikTok</td>
 <td>Not yet launched</td>
-</tr>
-<tr>
-<td>Email marketing</td>
-<td>Not yet launched</td>
-</tr>
-<tr>
-<td>Blog content</td>
-<td>Planned — 3 placeholder articles</td>
-</tr>
-<tr>
-<td>Google Analytics</td>
-<td>Not yet configured</td>
 </tr>
 </tbody></table>
 <h3>1.5 Document Purpose</h3>
@@ -1044,8 +1060,8 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <p><strong>Cadence:</strong> 4–6 events per month across SoCal</p>
 <hr>
 <h2>5. Digital Platform Strategy</h2>
-<h3>5.1 Marketing Site (BUILT)</h3>
-<p>A high-conversion single-page marketing site has been built to serve as the brand&#39;s primary web presence and funnel visitors to the Shopify store and Calendly bookings.</p>
+<h3>5.1 Marketing Site (LIVE)</h3>
+<p>A high-conversion marketing site serves as the brand&#39;s primary web presence, funneling visitors to the Shopify store and Calendly bookings. The site is deployed to Cloudflare Pages with a custom domain.</p>
 <table>
 <thead>
 <tr>
@@ -1062,8 +1078,16 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>Tailwind CSS 3 with custom brand theme</td>
 </tr>
 <tr>
+<td><strong>Hosting</strong></td>
+<td>Cloudflare Pages (auto-deploy from GitHub <code>main</code> branch)</td>
+</tr>
+<tr>
+<td><strong>Domain</strong></td>
+<td><code>shineandbond.com</code> (Cloudflare DNS + Pages)</td>
+</tr>
+<tr>
 <td><strong>Architecture</strong></td>
-<td>Single-page SPA with smooth scroll navigation</td>
+<td>Multi-page site: homepage (SPA sections), blog, legal pages</td>
 </tr>
 <tr>
 <td><strong>Fonts</strong></td>
@@ -1109,7 +1133,42 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>Subtle accent (badges, tags)</td>
 </tr>
 </tbody></table>
-<p><strong>Sections Implemented:</strong></p>
+<p><strong>Pages &amp; Routes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Page</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td>Homepage</td>
+<td>Single-page with 14 sections (see below)</td>
+</tr>
+<tr>
+<td><code>/blog</code></td>
+<td>Stories &amp; Guides</td>
+<td>Blog listing with 3 live articles</td>
+</tr>
+<tr>
+<td><code>/blog/[slug]</code></td>
+<td>Article Detail</td>
+<td>Individual blog post with cover image, TOC, related posts</td>
+</tr>
+<tr>
+<td><code>/privacy</code></td>
+<td>Privacy Policy</td>
+<td>Full privacy policy with SMS consent, CCPA, third-party services</td>
+</tr>
+<tr>
+<td><code>/terms</code></td>
+<td>Terms &amp; Conditions</td>
+<td>Full T&amp;C with SMS program details, STOP/HELP instructions</td>
+</tr>
+</tbody></table>
+<p><strong>Homepage Sections:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1166,22 +1225,22 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <tr>
 <td>10</td>
 <td>Blog Preview</td>
-<td>3 placeholder articles (Education, Styling, Guide)</td>
+<td>3 live articles with AI-generated thumbnail images, links to <code>/blog</code></td>
 </tr>
 <tr>
 <td>11</td>
 <td>Contact &amp; FAQ</td>
-<td>Contact form + 8-question accordion</td>
+<td>Contact form (email + SMS + CRM) + 8-question accordion</td>
 </tr>
 <tr>
 <td>12</td>
 <td>Newsletter</td>
-<td>Email capture on teal background</td>
+<td>Email capture on teal background (Klaviyo integration)</td>
 </tr>
 <tr>
 <td>13</td>
 <td>Footer</td>
-<td>Logo, social icons, shop/company links, tagline</td>
+<td>Logo, social icons, shop/company links, privacy/terms links</td>
 </tr>
 <tr>
 <td>14</td>
@@ -1189,6 +1248,44 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>Fixed bottom bar: &quot;Shop Now&quot; + &quot;Book a Party&quot;</td>
 </tr>
 </tbody></table>
+<p><strong>Contact Form Integrations:</strong></p>
+<p>The contact form (<code>ContactForm.js</code>) triggers three parallel actions on submission:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Service</th>
+<th>Purpose</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Web3Forms</td>
+<td>Email notification to <code>info@shineandbond.com</code></td>
+<td>Critical path — blocks on failure</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Klaviyo</td>
+<td>Add contact to &quot;Contact Inquiries&quot; CRM list</td>
+<td>Critical path — blocks on failure</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Twilio (via Cloudflare Pages Function)</td>
+<td>SMS to owner(s) + customer confirmation</td>
+<td>Fire-and-forget — non-blocking</td>
+</tr>
+</tbody></table>
+<p>SMS details:</p>
+<ul>
+<li><strong>Endpoint:</strong> <code>/api/send-sms</code> (Cloudflare Pages Function at <code>functions/api/send-sms.js</code>)</li>
+<li><strong>Owner SMS:</strong> Always sent to all numbers in <code>OWNER_PHONE_NUMBERS</code> (comma-separated)</li>
+<li><strong>Customer SMS:</strong> Sent only if a valid US phone number is provided</li>
+<li><strong>Status:</strong> Built and deployed; pending Twilio A2P 10DLC approval for production messaging</li>
+<li><strong>Twilio number:</strong> <code>+13237725951</code></li>
+</ul>
 <p><strong>External Links:</strong></p>
 <ul>
 <li>Shopify: <code>shineandbond.myshopify.com/collections/all</code></li>
@@ -1366,10 +1463,70 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <li><strong>Publish:</strong> Post to blog with internal links to 2-3 relevant products</li>
 <li><strong>Distribute:</strong> Share to Instagram Stories, email newsletter, and Pinterest</li>
 </ol>
-<h3>6.4 Blog Infrastructure</h3>
-<p><strong>Current:</strong> Placeholder blog section in marketing site (3 static cards, no click-through)</p>
-<p><strong>Phase 1:</strong> Build blog as data-driven component reading from JSON/markdown content files in the project</p>
-<p><strong>Phase 2:</strong> Migrate to headless CMS (Contentful or Sanity) for non-technical content management</p>
+<h3>6.4 Blog Infrastructure (LIVE)</h3>
+<p><strong>Current:</strong> Fully functional blog system with 3 published articles, AI-generated cover images, and SEO metadata.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Content format</strong></td>
+<td>Markdown files in <code>content/blog/</code> directory</td>
+</tr>
+<tr>
+<td><strong>Rendering</strong></td>
+<td>Dynamic routes via Next.js <code>app/blog/[slug]/page.js</code></td>
+</tr>
+<tr>
+<td><strong>Cover images</strong></td>
+<td>AI-generated via Gemini (Nano Banana MCP), stored in <code>public/images/blog/</code></td>
+</tr>
+<tr>
+<td><strong>Listing page</strong></td>
+<td><code>/blog</code> — &quot;Stories &amp; Guides&quot; with category badges and cover thumbnails</td>
+</tr>
+<tr>
+<td><strong>Homepage preview</strong></td>
+<td>Blog Preview section on homepage with 3 article cards linked to <code>/blog</code></td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td>Auto-generated table of contents, related posts, category badges, reading time</td>
+</tr>
+</tbody></table>
+<p><strong>Published Articles:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Title</th>
+<th>Slug</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>The Ultimate Guide to Lab-Grown Diamonds</td>
+<td><code>lab-grown-diamonds-guide</code></td>
+<td>Education</td>
+</tr>
+<tr>
+<td>2</td>
+<td>How to Style Gold Jewelry for Every Occasion</td>
+<td><code>style-gold-jewelry</code></td>
+<td>Styling</td>
+</tr>
+<tr>
+<td>3</td>
+<td>What is Permanent Jewelry? Everything You Need to Know</td>
+<td><code>what-is-permanent-jewelry</code></td>
+<td>Guide</td>
+</tr>
+</tbody></table>
+<p><strong>Next Phase:</strong> Migrate to headless CMS (Contentful or Sanity) for non-technical content management (planned Q3 2026)</p>
 <h3>6.5 Launch Articles (3 Initial Posts)</h3>
 <ol>
 <li><p><strong>&quot;The Ultimate Guide to Lab-Grown Diamonds&quot;</strong> (Education)</p>
@@ -1542,13 +1699,38 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 </thead>
 <tbody><tr>
 <td>Next.js 14 + Tailwind CSS</td>
-<td>Marketing / landing site</td>
-<td>✅ Built</td>
+<td>Marketing site (static export)</td>
+<td>✅ Live</td>
+</tr>
+<tr>
+<td>Cloudflare Pages</td>
+<td>Hosting, CDN, serverless functions, DNS</td>
+<td>✅ Live</td>
 </tr>
 <tr>
 <td>Shopify</td>
 <td>E-commerce, checkout, inventory</td>
 <td>✅ Live</td>
+</tr>
+<tr>
+<td>Google Analytics 4</td>
+<td>Website analytics (tracking ID <code>G-SLN0X80WY2</code>)</td>
+<td>✅ Live</td>
+</tr>
+<tr>
+<td>Klaviyo</td>
+<td>Email marketing, newsletter, contact CRM</td>
+<td>✅ Live</td>
+</tr>
+<tr>
+<td>Web3Forms</td>
+<td>Contact form → email delivery to <code>info@shineandbond.com</code></td>
+<td>✅ Live</td>
+</tr>
+<tr>
+<td>Twilio</td>
+<td>SMS notifications (contact form → owner + customer)</td>
+<td>✅ Built (pending A2P approval)</td>
 </tr>
 <tr>
 <td>Calendly</td>
@@ -1566,7 +1748,8 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>✅ Implemented</td>
 </tr>
 </tbody></table>
-<h3>8.2 Planned Integrations</h3>
+<h3>8.2 Remaining Planned Integrations</h3>
+<p>Items previously in this list that are now live: Google Analytics 4, Klaviyo, and workflow automation (replaced n8n/Zapier with Web3Forms + Twilio via Cloudflare Pages Functions).</p>
 <table>
 <thead>
 <tr>
@@ -1577,12 +1760,6 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 </tr>
 </thead>
 <tbody><tr>
-<td>Google Analytics 4</td>
-<td>Website analytics</td>
-<td>High</td>
-<td>Q1 2026</td>
-</tr>
-<tr>
 <td>Google Search Console</td>
 <td>SEO monitoring</td>
 <td>High</td>
@@ -1591,12 +1768,6 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <tr>
 <td>Google Business Profile</td>
 <td>Local SEO</td>
-<td>High</td>
-<td>Q1 2026</td>
-</tr>
-<tr>
-<td>Klaviyo</td>
-<td>Email marketing &amp; automation</td>
 <td>High</td>
 <td>Q1 2026</td>
 </tr>
@@ -1617,12 +1788,6 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>Headless CMS for blog</td>
 <td>Medium</td>
 <td>Q3 2026</td>
-</tr>
-<tr>
-<td>n8n or Zapier</td>
-<td>Workflow automation (form → email, order → notification)</td>
-<td>Medium</td>
-<td>Q2 2026</td>
 </tr>
 <tr>
 <td>Facebook Pixel + Meta Business Suite</td>
@@ -2030,7 +2195,7 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 </tr>
 <tr>
 <td><strong>Blog/content</strong></td>
-<td>Planned</td>
+<td>Live (3 articles)</td>
 <td>Extensive (100+ articles)</td>
 <td>Extensive (500+ articles)</td>
 <td>Moderate</td>
@@ -2100,10 +2265,10 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>Launched March 7, 2026</td>
 </tr>
 <tr>
-<td>Marketing site built</td>
+<td>Marketing site built &amp; deployed</td>
 <td>✅ Complete</td>
 <td>Dev</td>
-<td>Next.js 14 + Tailwind CSS</td>
+<td>Next.js 14 + Tailwind CSS on Cloudflare Pages at <code>shineandbond.com</code></td>
 </tr>
 <tr>
 <td>Brand photography complete</td>
@@ -2113,15 +2278,45 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 </tr>
 <tr>
 <td>Connect contact form to email service</td>
-<td>☐ Pending</td>
+<td>✅ Complete</td>
 <td>Dev</td>
-<td>n8n webhook or Formspree</td>
+<td>Web3Forms → <code>info@shineandbond.com</code></td>
+</tr>
+<tr>
+<td>Contact form SMS notifications</td>
+<td>✅ Complete</td>
+<td>Dev</td>
+<td>Twilio via Cloudflare Pages Function (pending A2P 10DLC approval)</td>
+</tr>
+<tr>
+<td>Contact form CRM integration</td>
+<td>✅ Complete</td>
+<td>Dev</td>
+<td>Klaviyo &quot;Contact Inquiries&quot; list</td>
 </tr>
 <tr>
 <td>Set up Google Analytics 4</td>
-<td>☐ Pending</td>
+<td>✅ Complete</td>
 <td>Dev</td>
-<td>Track site traffic + conversions</td>
+<td>Tracking ID <code>G-SLN0X80WY2</code></td>
+</tr>
+<tr>
+<td>Set up email marketing (Klaviyo)</td>
+<td>✅ Complete</td>
+<td>Dev</td>
+<td>Newsletter signup + contact form CRM lists</td>
+</tr>
+<tr>
+<td>Launch first 3 blog posts</td>
+<td>✅ Complete</td>
+<td>Dev/Content</td>
+<td>Live with AI-generated cover images</td>
+</tr>
+<tr>
+<td>Privacy Policy &amp; Terms pages</td>
+<td>✅ Complete</td>
+<td>Dev</td>
+<td><code>/privacy</code> and <code>/terms</code> — required for Twilio A2P registration</td>
 </tr>
 <tr>
 <td>Set up Google Search Console</td>
@@ -2136,22 +2331,10 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <td>Hours, photos, categories, reviews</td>
 </tr>
 <tr>
-<td>Launch first 3 blog posts</td>
-<td>☐ Pending</td>
-<td>Content</td>
-<td>Lab diamonds, styling guide, permanent jewelry</td>
-</tr>
-<tr>
 <td>Create TikTok account</td>
 <td>☐ Pending</td>
 <td>Founders</td>
 <td>First 10 videos (welding, GRWM, events)</td>
-</tr>
-<tr>
-<td>Set up email marketing (Klaviyo)</td>
-<td>☐ Pending</td>
-<td>Dev</td>
-<td>Welcome series, newsletter template</td>
 </tr>
 <tr>
 <td>Enhance Shopify product descriptions</td>
@@ -2458,7 +2641,7 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 </thead>
 <tbody><tr>
 <td>Blog posts published</td>
-<td>0</td>
+<td>3</td>
 <td>12</td>
 <td>36</td>
 </tr>
@@ -2548,9 +2731,9 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 </tr>
 <tr>
 <td><strong>Contact form not connected</strong></td>
-<td>Medium</td>
-<td>Certain</td>
-<td>Immediate action: connect form to email service (n8n, Formspree, or Klaviyo) before driving traffic</td>
+<td><del>Medium</del></td>
+<td><del>Certain</del></td>
+<td>✅ <strong>RESOLVED</strong> — Form now delivers email (Web3Forms), adds to CRM (Klaviyo), and sends SMS (Twilio). SMS pending A2P 10DLC carrier approval.</td>
 </tr>
 </tbody></table>
 <h3>14.3 Operational Risks</h3>
@@ -2625,7 +2808,7 @@ Brands that offer permanent jewelry (Gorjana, local welders) typically sell gold
 <li>Generic luxury clichés (&quot;the finer things,&quot; &quot;indulge yourself&quot;)</li>
 </ul>
 <hr>
-<p><em>Document prepared February 2026. Revision schedule: Quarterly review and update.</em></p>
+<p><em>Document prepared February 19, 2026. Updated February 23, 2026 (v1.1) to reflect completed integrations: Cloudflare Pages deployment, Google Analytics 4, Klaviyo CRM/email, Web3Forms contact email, Twilio SMS notifications, blog launch (3 articles), and Privacy Policy/Terms pages. Revision schedule: Quarterly review and update.</em></p>
 
 
     <div class="footer">
